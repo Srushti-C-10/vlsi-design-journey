@@ -1,7 +1,7 @@
 module mux_4_tb;
 reg a,b,c,d,s0,s1;
 wire z;
-integer i;
+integer i,j;
 mux_4 dut(.a(a),.b(b),.c(c),.d(d),.s0(s0),.s1(s1),.z(z));
 initial
 begin
