@@ -2,12 +2,12 @@ module mux_4_tb;
 reg a,b,c,d,s0,s1;
 wire z;
 integer i,j;
-mux_4 dut(.a(a),.b(b),.c(c),.d(d),.s0(s0),.s1(s1),.z(z));
+mux_4 dut(.a(a),.b(b),.c(c),.d(d),.s0(s0),.s1(s1),.y(z));
 initial
 begin
   for(i=0;i<4;i=i+1)
   begin
-{s0,s1}=i;
+{s1,s0}=i;
 for(j=0;j<16;j=j+1)
   begin
 {a,b,c,d}=j;
@@ -17,5 +17,6 @@ end
   end
   initial
   $monitor("Input a=%b,b=%b,c=%b,d=%b,s1=%b,s0=%b => Output z=%b",a,b,c,d,s1,s0,z);
-initial #1000 $finish;
+initial #500 $finish;
 endmodule
+
