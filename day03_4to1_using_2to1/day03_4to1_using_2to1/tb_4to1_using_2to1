@@ -17,6 +17,6 @@ end
   end
   initial
   $monitor("Input a=%b,b=%b,c=%b,d=%b,s1=%b,s0=%b => Output z=%b",a,b,c,d,s1,s0,z);
-initial #500 $finish;
+initial #700 $finish;
 endmodule
 
