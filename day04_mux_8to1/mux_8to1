@@ -1,0 +1,38 @@
+// 2:1 MUX
+module mux2 (
+    input i0, i1,
+    input s,
+    output y
+);
+assign y = (s) ? i1 : i0;
+endmodule
+
+
+// 4:1 MUX using 2:1
+module mux4 (
+    input i0, i1, i2, i3,
+    input s0, s1,
+    output y
+);
+wire w1, w2;
+
+mux2 m1 (.i0(i0), .i1(i1), .s(s0), .y(w1));
+mux2 m2 (.i0(i2), .i1(i3), .s(s0), .y(w2));
+mux2 m3 (.i0(w1), .i1(w2), .s(s1), .y(y));
+
+endmodule
+
+
+// 8:1 MUX using two 4:1 + one 2:1
+module mux8 (
+    input i0,i1,i2,i3,i4,i5,i6,i7,
+    input s0,s1,s2,
+    output y
+);
+wire w1, w2;
+
+mux4 m4_1 (.i0(i0), .i1(i1), .i2(i2), .i3(i3), .s0(s0), .s1(s1), .y(w1));
+mux4 m4_2 (.i0(i4), .i1(i5), .i2(i6), .i3(i7), .s0(s0), .s1(s1), .y(w2));
+mux2 m2_1 (.i0(w1), .i1(w2), .s(s2), .y(y));
+
+endmodule
