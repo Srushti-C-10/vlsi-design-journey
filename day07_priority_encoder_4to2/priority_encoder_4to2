@@ -1,0 +1,9 @@
+module priority_encoder_4to2(input d0,d1,d2,d3,output reg y0,y1);
+always@(*)begin
+if(d3) {y1,y0}=2'b11;
+else if(d2) {y1,y0}=2'b10;
+else if(d1) {y1,y0}=2'b01;
+else if(d0) {y1,y0}=2'b00;
+else        {y1,y0}=2'b00;
+end
+endmodule
