@@ -1,3 +1,12 @@
+module full_adder(
+    input a, b, cin,
+    output sum, cout
+);
+
+assign {cout, sum} = a + b + cin;
+
+endmodule
+
 module rca_4bit (
     input [3:0] a, b,
     input cin,
